@@ -25,7 +25,7 @@ export async function makeRequest() {
   return fetch("https://api.rhino.fi/bfx/v2/book/tETHUSD/P0", {
     method: "GET",
   })
-    .then((response) => response.json()) // Parse the response in JSON
+    .then((response) => response.json())
     .then((response) => {
       return response;
     });

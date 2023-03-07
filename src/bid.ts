@@ -8,19 +8,19 @@ import {
 export class Bid {
   price: number;
   amount: number;
-  bestBidValue: number;
+  bestValue: number;
   status: OrderStatus;
 
   public constructor(bestBidValue: number, maxAmountETH: number) {
     this.price = getRandomPrice(bestBidValue);
     this.amount = getRandomArbitrary(0, maxAmountETH);
-    this.bestBidValue = bestBidValue;
+    this.bestValue = bestBidValue;
     this.status = OrderStatus.open;
     console.log("PLACE BID @", this.price, this.amount);
   }
 
   public fillBid(availableAmount: number): boolean {
-    if (this.price > this.bestBidValue && this.amount <= availableAmount) {
+    if (this.price > this.bestValue && this.amount <= availableAmount) {
       console.log(
         "FILLED BID @ ",
         this.price,

@@ -21,7 +21,7 @@ export async function orderbook(eth: Asset, usd: Asset) {
 
 // HELPER FUNCTIONS
 
-function placeBids(bestBidValue: number, eth: Asset): Array<Bid> {
+export function placeBids(bestBidValue: number, eth: Asset): Array<Bid> {
   let bids: Array<Bid> = [];
   for (let i = 0; i < 5; i++) {
     let bid: Bid = new Bid(bestBidValue, eth.getValue());
@@ -31,7 +31,7 @@ function placeBids(bestBidValue: number, eth: Asset): Array<Bid> {
   return bids;
 }
 
-function fillBids(bids: Array<Bid>, eth: Asset, usd: Asset) {
+export function fillBids(bids: Array<Bid>, eth: Asset, usd: Asset) {
   for (let i = 0; i < 5; i++) {
     let bidIterator = bids[i];
     if (bidIterator.fillBid(eth.getValue())) {
@@ -43,7 +43,7 @@ function fillBids(bids: Array<Bid>, eth: Asset, usd: Asset) {
   }
 }
 
-function placeAsks(bestAskValue: number, usd: Asset): Array<Ask> {
+export function placeAsks(bestAskValue: number, usd: Asset): Array<Ask> {
   let asks: Array<Ask> = [];
   for (let i = 0; i < 5; i++) {
     let ask: Ask = new Ask(bestAskValue, usd.getValue());
@@ -52,7 +52,7 @@ function placeAsks(bestAskValue: number, usd: Asset): Array<Ask> {
   return asks;
 }
 
-function fillAsks(asks: Array<Ask>, eth: Asset, usd: Asset) {
+export function fillAsks(asks: Array<Ask>, eth: Asset, usd: Asset) {
   for (let i = 0; i < 5; i++) {
     let askIterator = asks[i];
     if (askIterator.fillAsk(usd.getValue())) {
